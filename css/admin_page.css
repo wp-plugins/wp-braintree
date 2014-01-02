@@ -1,0 +1,14 @@
+/* CSS Document */
+
+#merchant_id, #public_key, #private_key {
+	width: 400px;
+}
+#cse_key {
+	width: 400px;
+	height: 100px;
+}
+
+/* .postbox mods */
+.postbox {
+	padding: 10px;
+}

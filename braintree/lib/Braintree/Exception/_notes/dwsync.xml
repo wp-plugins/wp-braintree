@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Authentication.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="Authorization.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="Configuration.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="DownForMaintenance.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="ForgedQueryString.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="InvalidSignature.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130143194560000000" remote="130322284200000000" Dst="1" />
+<file name="NotFound.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="ServerError.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="SSLCaFileNotFound.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130143194560000000" remote="130322284200000000" Dst="1" />
+<file name="SSLCertificate.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="Unexpected.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="UpgradeRequired.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+<file name="ValidationsFailed.php" server="ftp.joshlobe.com/public_html/testsite/wp-content/plugins/wp_braintree/" local="130132968720000000" remote="130322284200000000" Dst="1" />
+</dwsync>
