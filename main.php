@@ -2,8 +2,8 @@
 /**
  * Plugin Name: WP BrainTree
  * Plugin URI: http://www.tipsandtricks-hq.com/wordpress-braintree-plugin
- * Description: Create "Buy Now" buttons for BrainTree payment gateway.
- * Version: 1.0
+ * Description: Create "Buy Now" buttons for BrainTree payment gateway to accept payment for a product or service.
+ * Version: 1.1
  * Author: Tips and Tricks HQ, josh401
  * Author URI: http://www.tipsandtricks-hq.com/
  * License: GPL2
@@ -140,6 +140,11 @@ class wp_braintree {
                 <a href="?page=wp_braintree_options&tab=active_buttons" class="nav-tab <?php echo $active_tab == 'active_buttons' ? 'nav-tab-active' : ''; ?>">Active Buttons</a> 
             </h2>  
             
+            <div style="background: none repeat scroll 0 0 #ECECEC;border: 1px solid #CFCFCF;color: #363636;margin: 10px 0 15px;padding:15px;text-shadow: 1px 1px #FFFFFF;">
+            For usage documentation and updates, please visit the plugin page at the following URL:<br>
+            <a target="_blank" href="http://www.tipsandtricks-hq.com/wordpress-braintree-plugin">http://www.tipsandtricks-hq.com/wordpress-braintree-plugin</a>
+            </div>
+                        
             <form method="post" action="options.php">
                 
                 <?php
@@ -326,7 +331,10 @@ class wp_braintree {
                 </p>
             </form>
             
-            
+            <div style="background: none repeat scroll 0 0 #FFF6D5;border: 1px solid #D1B655;color: #3F2502;margin: 10px 0;padding: 5px 5px 5px 10px;text-shadow: 1px 1px #FFFFFF;">	
+            <p>If you need a feature rich and supported plugin for accepting Braintree payments then check out our <a target="_blank" href="http://www.tipsandtricks-hq.com/?p=1059">WP eStore Plugin</a> (You will love the WP eStore Plugin).</p>
+            </div>
+                        
 		</div> <!-- End wrap -->
         <?php
 	}
@@ -401,11 +409,22 @@ class wp_braintree {
 					// Submit transaction for settlement
 					$result = Braintree_Transaction::submitForSettlement($result->transaction->id);
 				}
-				
+                                
 				if ($result->success) {
+                                        $wp_braintree_order_id = strip_tags($_REQUEST['wpb_order_id']);
+                                        $url_data = '';
+                                        if(isset($_SESSION[$wp_braintree_order_id])){
+                                            $args = $_SESSION[$wp_braintree_order_id];
+                                            $url_data = $args['url'];
+                                        }
+                                        
 					echo("<div id='dialog-message-success' title='".__("Purchase Success!", "wp_braintree_lang")."'>");
 						echo(__("Congratulations! The transaction has completed successfully. Please keep the Transaction ID for your records.", "wp_braintree_lang"));
 						echo("<br /><br />");
+                                                if(!empty($url_data)){
+                                                    echo '<a href="'.$url_data.'">'.__('Click here','wp_braintree_lang').'</a>';
+                                                    echo(__(' to download the item.<br /><br />', 'wp_braintree_lang'));
+                                                }
 						echo("<strong>".__("Transaction ID:", "wp_braintree_lang")." </strong>" . $result->transaction->id);
 					echo("</div>");
 				} 
@@ -443,13 +462,25 @@ class wp_braintree {
 		$opts = get_option($this->option_name);
 		
 		// Extract shortcode args
-		extract(shortcode_atts(array( 'item_name' => 'item_name', 'item_amount' => 'item_amount'), $atts));
+		extract(shortcode_atts(array( 
+                    'item_name' => 'item_name', 
+                    'item_amount' => 'item_amount',
+                    'url' => '',
+                    ),$atts));
 		
 		// Call braintree api above
 		$this->wp_braintree_get_api();
 		
+                //Generate an order ID to reference the transaction
+                $order_id = uniqid();
+                
 		// Get url of current page (used for the redirect - which adds a hash to the current page - which MUST be read from the redirect url)
-		$cur_page = $this->curPageURL();
+                $cur_page = $this->curPageURL();
+                        
+                if(!empty($url)){//Append the order ID in the redirect URL
+                    $_SESSION[$order_id] = $atts;
+                    $cur_page = add_query_arg( array('wpb_order_id' => $order_id), $cur_page);
+                }
 		
 		// Setup protected table data for the price of the item.
 		// This prevents tampering of the price via the browser.
@@ -458,12 +489,12 @@ class wp_braintree {
 		  array(
 			'transaction' => array(
 			  'type' => Braintree_Transaction::SALE,
-			  'amount' => $item_amount
+			  'amount' => $item_amount,                          
 			),
-			'redirectUrl' => $cur_page
+			'redirectUrl' => $cur_page,
 		  )
 		);
-		
+
 		// Begin shortcode div
 		$button_form = '';
 		$button_form .= '<div class="wp_braintree_button">';
@@ -480,7 +511,6 @@ class wp_braintree {
 			// Generate the associated form output for payment processing
 			// These are hidden on page load via jquery.
 			// Clicking the button[code] above.. shows/hides the associated form.
-			
 			
 			$button_form .= '<div class="dialog-form" title="New Transaction">
 									<h3>'.__('Braintree Credit Card Transaction Form', 'wp_braintree_lang').'</h3>

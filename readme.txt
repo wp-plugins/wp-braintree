@@ -1,10 +1,10 @@
 === WP Braintree ===
 Contributors: Tips and Tricks HQ, josh401
 Donate link: http://www.tipsandtricks-hq.com/development-center
-Tags: braintree, payment gateway, cart, checkout, e-commerce, online store, sales, sell
+Tags: braintree, payment gateway, cart, checkout, e-commerce, store, sales, sell, accept payment, payment, card payment
 Requires at least: 3.0
-Tested up to: 3.8
-Stable tag: 1.0
+Tested up to: 3.9
+Stable tag: 1.1
 License: GPLv2 or later
 
 Easily accept payments via Braintree payment gateway. Quick onsite checkout functionality.
@@ -14,6 +14,8 @@ Easily accept payments via Braintree payment gateway. Quick onsite checkout func
 This plugin allows you to accept payments using Braintree payment gateway on your WordPress site. 
 
 Users can easily pay with credit cards for your products or services using one-click "Buy Now" button.
+
+You can accept credit card payment for products, services or digital downloads using this plugin.
 
 = Settings Configuration =
 
@@ -27,6 +29,12 @@ Once you have installed the plugin you need to provide your Braintree merchant d
 Now create a new post/page and insert Braintree shortcode for your product. For example:
 
 `[wp_braintree_button item_name="Test Product" item_amount="5.00"]`
+
+Use the following shortcode to sell a digital item/product using Braintree:
+
+`[wp_braintree_button item_name="Test Product" item_amount="5.00" url="example.com/downloads/myproduct.zip"]`
+
+The plugin will let the customer download the digital item after a successful payment.
 
 For screenshots, detailed documentation, support and updates, please visit: [WordPress Braintree plugin](http://www.tipsandtricks-hq.com/wordpress-braintree-plugin) page
 
@@ -61,6 +69,9 @@ None
 None
 
 == Changelog ==
+
+= 1.1 =
+* Added a new feature to accommodate the selling of a digital item via this plugin. You can specify the URL of a digital item in the shortcode using the "url" parameter.
 
 = 1.0 = 
 * First commit to the wordpress repository
