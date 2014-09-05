@@ -3,7 +3,7 @@ Contributors: Tips and Tricks HQ, josh401
 Donate link: http://www.tipsandtricks-hq.com/development-center
 Tags: braintree, payment gateway, cart, checkout, e-commerce, store, sales, sell, accept payment, payment, card payment
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 1.1
 License: GPLv2 or later
 
