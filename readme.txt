@@ -1,13 +1,13 @@
 === WP Braintree ===
 Contributors: Tips and Tricks HQ, josh401
-Donate link: http://www.tipsandtricks-hq.com/development-center
+Donate link: https://www.tipsandtricks-hq.com/development-center
 Tags: braintree, payment gateway, cart, checkout, e-commerce, store, sales, sell, accept payment, payment, card payment
 Requires at least: 3.0
 Tested up to: 4.2
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 
-Easily accept payments via Braintree payment gateway. Quick onsite checkout functionality.
+Easily accept payments via Braintree payment gateway. Quick on-site checkout functionality.
 
 == Description ==
 
@@ -36,14 +36,18 @@ Use the following shortcode to sell a digital item/product using Braintree:
 
 The plugin will let the customer download the digital item after a successful payment.
 
-For screenshots, detailed documentation, support and updates, please visit: [WordPress Braintree plugin](http://www.tipsandtricks-hq.com/wordpress-braintree-plugin) page
+You can customize the buy now button text using the "button_text" parameter in the shortcode. For example:
+
+`[wp_braintree_button item_name="Test Product" item_amount="5.00" button_text="Buy This Item"]`
+
+For screenshots, detailed documentation, support and updates, please visit: [WordPress Braintree plugin](https://www.tipsandtricks-hq.com/wordpress-braintree-plugin) page
 
 == Usage ==
 
 You need to embed the appropriate shortcode on a post/page to create Braintree Buy Now button.
 
 Instructions for using the shortcodes are available at the following URL: 
-[Accept Braintree Payments Usage Instruction](http://www.tipsandtricks-hq.com)
+[Accept Braintree Payments Usage Instruction](https://www.tipsandtricks-hq.com/wordpress-braintree-plugin)
 
 == Installation ==
 
@@ -69,6 +73,9 @@ None
 None
 
 == Changelog ==
+
+= 1.2 =
+* Added a new parameter in the shortcode so the Buy Now button text can be customized.
 
 = 1.1 =
 * Added a new feature to accommodate the selling of a digital item via this plugin. You can specify the URL of a digital item in the shortcode using the "url" parameter.
